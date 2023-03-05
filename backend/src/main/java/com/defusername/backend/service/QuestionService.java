@@ -47,8 +47,7 @@ public class QuestionService {
 			questionToBeUpdated.setOptions(updatedQuestion.getOptions());
 		if (updatedQuestion.getDifficultyLevel() != null)
 			questionToBeUpdated.setDifficultyLevel(updatedQuestion.getDifficultyLevel());
-		questionRepository.save(questionToBeUpdated);
-		return questionToBeUpdated;
+		return questionRepository.save(questionToBeUpdated);
 	}
 
 }

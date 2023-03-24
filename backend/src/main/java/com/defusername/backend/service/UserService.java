@@ -2,16 +2,21 @@ package com.defusername.backend.service;
 
 import com.defusername.backend.model.User;
 import com.defusername.backend.repository.UserRepository;
+import com.defusername.backend.security.AuthenticationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class UserService {
 
 	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
+	@Autowired
+	private final AuthenticationService authenticationService;
 
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
@@ -47,4 +52,5 @@ public class UserService {
 			userToBeUpdated.setUserRole(updatedUser.getUserRole());
 		return userRepository.save(userToBeUpdated);
 	}
+
 }

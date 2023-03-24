@@ -1,7 +1,12 @@
 package com.defusername.backend.controller;
 
 import com.defusername.backend.model.User;
+import com.defusername.backend.security.AuthenticationRequest;
+import com.defusername.backend.security.AuthenticationResponse;
+import com.defusername.backend.security.AuthenticationService;
+import com.defusername.backend.security.RegisterRequest;
 import com.defusername.backend.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +15,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Controller
 @RestController
 @RequestMapping("/api/v1/user")
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private final AuthenticationService authenticationService;
+	@Autowired
+	private final UserService userService;
 
 	@GetMapping(path = "/all")
 	public List<User> getAllUsers() {
@@ -28,9 +36,22 @@ public class UserController {
 		return userService.getUser(id);
 	}
 
-	@PostMapping
-	public ResponseEntity<User> addNewUser(@RequestBody User user) {
-		return new ResponseEntity<>(userService.addNewUser(user), HttpStatus.OK);
+	@PostMapping("/register")
+	public ResponseEntity<AuthenticationResponse> addNewUser(
+			@RequestBody RegisterRequest request
+	) {
+		return ResponseEntity.ok(
+				authenticationService.register(request)
+		);
+	}
+
+	@PostMapping("/authenticate")
+	public ResponseEntity<AuthenticationResponse> authenticate(
+			@RequestBody AuthenticationRequest request
+	) {
+		return ResponseEntity.ok(
+				authenticationService.authenticate(request)
+		);
 	}
 
 	@DeleteMapping

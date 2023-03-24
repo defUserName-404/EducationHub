@@ -2,23 +2,27 @@ package com.defusername.backend.service;
 
 import com.defusername.backend.model.Question;
 import com.defusername.backend.repository.QuestionRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class QuestionService {
 
 	@Autowired
-	private QuestionRepository questionRepository;
+	private final QuestionRepository questionRepository;
 
 	public List<Question> getAllQuestions() {
 		return questionRepository.findAll();
 	}
 
+	// TODO: Implement custom exception
 	public Question getQuestion(Long id) {
-		return questionRepository.findById(id).orElseThrow(() -> new IllegalStateException("ID Not Found"));
+		return questionRepository.findById(id)
+				.orElseThrow(() -> new IllegalStateException("ID Not Found"));
 	}
 
 	public Question addNewQuestion(Question question) {
@@ -30,7 +34,8 @@ public class QuestionService {
 	}
 
 	public Question updateQuestion(Long id, Question updatedQuestion) {
-		Question questionToBeUpdated = questionRepository.findById(id).orElseThrow(() -> new IllegalStateException("ID Not Found"));
+		Question questionToBeUpdated = questionRepository.findById(id)
+				.orElseThrow(() -> new IllegalStateException("ID Not Found"));
 		if (updatedQuestion.getClassLevel() != null)
 			questionToBeUpdated.setClassLevel(updatedQuestion.getClassLevel());
 		if (updatedQuestion.getSubject() != null)

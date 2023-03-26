@@ -27,10 +27,6 @@ public class UserService {
 				.orElseThrow(() -> new IllegalStateException("User not found"));
 	}
 
-	public User addNewUser(User user) {
-		return userRepository.save(user);
-	}
-
 	public void removeUser(Long id) {
 		userRepository.deleteById(id);
 	}

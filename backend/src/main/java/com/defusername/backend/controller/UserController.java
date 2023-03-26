@@ -4,7 +4,6 @@ import com.defusername.backend.model.User;
 import com.defusername.backend.security.AuthenticationRequest;
 import com.defusername.backend.security.AuthenticationResponse;
 import com.defusername.backend.security.AuthenticationService;
-import com.defusername.backend.security.RegisterRequest;
 import com.defusername.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +37,10 @@ public class UserController {
 
 	@PostMapping("/register")
 	public ResponseEntity<AuthenticationResponse> addNewUser(
-			@RequestBody RegisterRequest request
+			@RequestBody User user
 	) {
 		return ResponseEntity.ok(
-				authenticationService.register(request)
+				authenticationService.register(user)
 		);
 	}
 

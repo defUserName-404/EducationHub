@@ -19,7 +19,6 @@ public class QuestionService {
 		return questionRepository.findAll();
 	}
 
-	// TODO: Implement custom exception
 	public Question getQuestion(Long id) {
 		return questionRepository.findById(id)
 				.orElseThrow(() -> new IllegalStateException("ID Not Found"));

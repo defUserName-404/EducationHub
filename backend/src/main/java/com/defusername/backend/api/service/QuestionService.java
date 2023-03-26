@@ -1,7 +1,7 @@
-package com.defusername.backend.service;
+package com.defusername.backend.api.service;
 
-import com.defusername.backend.model.Question;
-import com.defusername.backend.repository.QuestionRepository;
+import com.defusername.backend.api.controller.model.Question;
+import com.defusername.backend.api.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

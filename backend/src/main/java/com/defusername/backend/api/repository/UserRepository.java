@@ -1,6 +1,6 @@
-package com.defusername.backend.repository;
+package com.defusername.backend.api.repository;
 
-import com.defusername.backend.model.User;
+import com.defusername.backend.api.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

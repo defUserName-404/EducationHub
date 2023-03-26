@@ -1,4 +1,4 @@
-package com.defusername.backend.model;
+package com.defusername.backend.api.model;
 
 public class QuestionConfig {
 

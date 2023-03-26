@@ -1,7 +1,7 @@
-package com.defusername.backend.service;
+package com.defusername.backend.api.service;
 
-import com.defusername.backend.model.User;
-import com.defusername.backend.repository.UserRepository;
+import com.defusername.backend.api.model.User;
+import com.defusername.backend.api.repository.UserRepository;
 import com.defusername.backend.security.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

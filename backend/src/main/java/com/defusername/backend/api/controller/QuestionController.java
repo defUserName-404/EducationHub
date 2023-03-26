@@ -1,7 +1,7 @@
-package com.defusername.backend.controller;
+package com.defusername.backend.api.controller;
 
-import com.defusername.backend.model.Question;
-import com.defusername.backend.service.QuestionService;
+import com.defusername.backend.api.controller.model.Question;
+import com.defusername.backend.api.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

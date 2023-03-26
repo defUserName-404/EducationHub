@@ -1,10 +1,10 @@
-package com.defusername.backend.controller;
+package com.defusername.backend.api.controller;
 
-import com.defusername.backend.model.User;
+import com.defusername.backend.api.model.User;
+import com.defusername.backend.api.service.UserService;
 import com.defusername.backend.security.AuthenticationRequest;
 import com.defusername.backend.security.AuthenticationResponse;
 import com.defusername.backend.security.AuthenticationService;
-import com.defusername.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
